@@ -46,8 +46,8 @@ public class StackUsingArrayOperations {
 		int returnVal = peek(s, 2);
 		System.out.println("Peeked: "+ s.A[returnVal] + ", Array Position: "+ returnVal);
 		
-		s = pop(s);
-		s = pop(s);
+		returnVal = pop(s);
+		returnVal = pop(s);
 		display(s);
 		
 		int top = stackTop(s);
@@ -55,38 +55,40 @@ public class StackUsingArrayOperations {
 		display(s);
 	}
 
-	private static void display(StackUsingArray s) {
+	public static void display(StackUsingArray s) {
 		for(int i= s.top; i>=0; i--) {
 			System.out.print(s.A[i] + " ");
 		}
 	}
 
-	private static int stackTop(StackUsingArray s) {
+	public static int stackTop(StackUsingArray s) {
 		if(isEmpty(s)) {
 			return -1;
 		}
 		return s.A[s.top];
 	}
 
-	private static StackUsingArray pop(StackUsingArray s) {
+	public static int pop(StackUsingArray s) {
 		if(isEmpty(s)) {
 			System.out.println("Stack Underflow!");
+			return -1;
 		} else {
-			System.out.println("Popped: "+ s.A[s.top]);
+			//System.out.println("Popped: "+ s.A[s.top]);
+			int x = s.A[s.top];
 			s.A[s.top] = 0;
 			s.top--;
+			return x;
 		}
-		return s;
 	}
 
-	private static int peek(StackUsingArray s, int pos) {
+	public static int peek(StackUsingArray s, int pos) {
 		if((s.top- pos + 1) < 0) {
 			System.out.println("Invalid index!");
 		}
 		return (s.top- pos + 1);
 	}
 
-	private static StackUsingArray push(StackUsingArray s, int value) {
+	public static StackUsingArray push(StackUsingArray s, int value) {
 		if(!isFull(s)) {
 			s.top++;
 			s.A[s.top] = value;
@@ -96,14 +98,14 @@ public class StackUsingArrayOperations {
 		return s;
 	}
 
-	private static boolean isFull(StackUsingArray s) {
+	public static boolean isFull(StackUsingArray s) {
 		if(s.top == s.size-1) {
 			return true;
 		}
 		return false;
 	}
 
-	private static boolean isEmpty(StackUsingArray st) {
+	public static boolean isEmpty(StackUsingArray st) {
 		if(st.top == -1) {
 			return true;
 		}
