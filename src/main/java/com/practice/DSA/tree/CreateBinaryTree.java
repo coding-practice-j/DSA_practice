@@ -5,12 +5,6 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-class Node{
-	int data;
-	Node leftChild;
-	Node rightChild;
-}
-
 public class CreateBinaryTree {
 
 	public static void main(String[] args) {
